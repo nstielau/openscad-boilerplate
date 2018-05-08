@@ -1,4 +1,4 @@
-.PHONY: build woot link usb default
+.PHONY: build woot link usb default update
 
 CURR_HEAD   := $(firstword $(shell git show-ref | cut -b -6) master)
 REL_DIR     := releases/${CURR_HEAD}
@@ -30,3 +30,9 @@ usb:
 
 default.cfg:
 	wget https://gist.githubusercontent.com/nstielau/5fa94abc9920e9fbaf90ee26186f4c03/raw/5d17f5147532610b128f2861514c39bc0e822d17/default.cfg
+
+
+update:
+	wget https://raw.githubusercontent.com/nstielau/openscad-boilerplate/master/Makefile -O Makefile
+	wget https://raw.githubusercontent.com/nstielau/openscad-boilerplate/master/.gitignore -O .gitignore
+	
