@@ -1,4 +1,5 @@
 .PHONY: build woot link usb default update
+.SILENT: usb
 
 CURR_HEAD   := $(firstword $(shell git show-ref | cut -b -6) master)
 REL_DIR     := releases/${CURR_HEAD}
@@ -8,6 +9,11 @@ CURDIR      := $(shell pwd)
 DRIVE       := UNTITLED
 TIME        := $(shell date +%s)
 # $(shell basename $(df -lH | grep "/Volumes/*"  | awk '{print $NF}'))
+
+NO_COLOR=\x1b[0m
+OK_COLOR=\x1b[32;01m
+ERROR_COLOR=\x1b[31;01m
+WARN_COLOR=\x1b[33;01m
 
 default: build usb
 
@@ -22,6 +28,7 @@ link:
 
 usb:
 	# Prep USB
+	ls /Volumes/${DRIVE} || echo "${ERROR_COLOR}Error: Cannot find USB Drive '${DRIVE}' ${NO_COLOR}"
 	mkdir -p /Volumes/${DRIVE}/all
 	rm -rf /Volumes/${DRIVE}/next
 	mkdir -p /Volumes/${DRIVE}/next
