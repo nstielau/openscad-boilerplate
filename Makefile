@@ -6,6 +6,7 @@ SCAD_FILE   := $(firstword $(shell ls *.scad))
 NAME        := $(shell basename ${SCAD_FILE} .scad)
 CURDIR      := $(shell pwd)
 DRIVE       := UNTITLED
+TIME        := $(shell date +%s)
 # $(shell basename $(df -lH | grep "/Volumes/*"  | awk '{print $NF}'))
 
 default: build usb
@@ -33,6 +34,6 @@ default.cfg:
 
 
 update:
-	wget https://raw.githubusercontent.com/nstielau/openscad-boilerplate/master/Makefile -O Makefile
-	wget https://raw.githubusercontent.com/nstielau/openscad-boilerplate/master/.gitignore -O .gitignore
+	wget https://raw.githubusercontent.com/nstielau/openscad-boilerplate/master/Makefile?${TIME} -O Makefile
+	wget https://raw.githubusercontent.com/nstielau/openscad-boilerplate/master/.gitignore?${TIME} -O .gitignore
 	
