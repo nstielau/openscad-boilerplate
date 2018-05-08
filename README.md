@@ -8,5 +8,4 @@ Includes these files
 
 ## How to setup?
 
-Set up with git subtree.  Instructions TBD.
-
+Including Makefile.  Run `make update`
