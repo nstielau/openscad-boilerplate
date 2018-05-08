@@ -1,0 +1,7 @@
+backups/*
+.DS_Store
+releases
+*.gx
+*.x3g
+current
+*.fpp
